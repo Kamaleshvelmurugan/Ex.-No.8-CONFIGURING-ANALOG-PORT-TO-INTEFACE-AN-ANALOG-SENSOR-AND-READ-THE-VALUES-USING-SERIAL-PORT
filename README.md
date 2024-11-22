@@ -150,17 +150,61 @@ This module also includes a potentiometer that will fix the threshold value, & t
 
 
 ##  Program 
+```
+NAME : kamalesh v
+REG NO: 212222240042
+```
+```
+#include "main.h"
+#include"stdio.h"
+uint32_t adcvalue;
+#if defined (_ICCARM) || defined (_ARMCC_VERSION)
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#elif defined(_GNUC_)
+   
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#endif  
 
+while(1)
+{
 
- 
+	HAL_ADC_Start(&hadc1);
+			HAL_ADC_PollForConversion(&hadc1,100);
+			adcvalue = HAL_ADC_GetValue(&hadc1);
+			HAL_ADC_Stop(&hadc1);
+			HAL_Delay(500);
+			printf("ADC VALUE:%ld\n",adcvalue);
 
-## Result :
+}
+
+PUTCHAR_PROTOTYPE
+{
+
+  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xFFFF);
+
+  return ch;
+}
+```
  
 ## Output  :
+## Board Settings and its connections :
 
+![image](https://github.com/Alfredsec/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/120621608/948f5c3f-3d89-4d06-ad9c-b0b7d957e085)
 
+![image](https://github.com/Alfredsec/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/120621608/4b1fce65-0b44-45a0-b7dc-310f43a64d4f)
 
+![image](https://github.com/Alfredsec/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/120621608/82cba092-bcc0-4d1b-aeb8-496159cd9423)
 
+## Normal ADC Value :
 
+![image](https://github.com/Alfredsec/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/120621608/eb00edb5-7ed6-4d7c-b11c-310becbdccd5)
 
-****
+## After Light Dipping of soil-moisture-sensor-device in water :
+
+![image](https://github.com/Alfredsec/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/120621608/e37600ff-0b32-4e01-9b92-01f1750a9bfa)
+
+![image](https://github.com/Alfredsec/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/120621608/f7d606e1-9680-4907-bfc8-1b122e7f9fd8)
+
+## Result :
+
+Hence,the configuring analog port to inteface an analog sensor and read the values using serial port runned successfully.
